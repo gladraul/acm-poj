@@ -7,8 +7,8 @@ import java.util.Scanner;
  *
  */
 public class Poj1014_01 {
-    private static int[] aValNum;
-    private static boolean flag = false;
+    private static int[] aValNum;//保存输入值
+    private static boolean flag = false;//标记递归是否结束，快速结束递归
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -33,7 +33,7 @@ public class Poj1014_01 {
                 System.out.println("Can't be divided.");
             }
             else { 
-                flag = false;
+                flag = false;//必须，不然flag状态和上次状态相同。
                 dfs(need, 5);
                 if(flag == true) {
                     System.out.println("Can be divided.");
@@ -47,6 +47,9 @@ public class Poj1014_01 {
         }
     }
 
+    //深度优先搜索
+    //need表示中间状态，当need等于0时，表示搜索到解
+    //index表示搜索的位置
     private static void dfs(int need, int index) {
         if(need == 0) {
             flag = true;
@@ -57,7 +60,7 @@ public class Poj1014_01 {
             return;
         }
 
-        for(int i = index; i > 0; i--) {
+        for(int i = index; i > 0; i--) {//将叶节点搜索一遍
             if(aValNum[i] > 0) {
                 if(need >= i + 1) {
                     aValNum[i]--;
@@ -67,7 +70,7 @@ public class Poj1014_01 {
                         return;
                     }
                 }
-                else {
+                else {//剪枝
                     i = need;
                 }
             }        

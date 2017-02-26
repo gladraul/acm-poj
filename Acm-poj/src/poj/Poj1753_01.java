@@ -31,14 +31,14 @@ public class Poj1753_01 {
             //w
             char[] arrW = Arrays.copyOf(arrValue, 16);    
             int stepW = flipArray(arrW, 'w');
-            if(!wAll(arrW)) {
+            if(!isGoal(arrW)) {
                 stepW = 17;
             }
            
             //b
             char[] arrB = Arrays.copyOf(arrValue, 16);    
             int stepB = flipArray(arrB, 'b');
-            if(!bAll(arrB)) {
+            if(!isGoal(arrB)) {
                 stepB = 17;
             }
             
@@ -53,23 +53,8 @@ public class Poj1753_01 {
 
     //判断是否是目标状态
     private static boolean isGoal(char[] arr) {
-        return wAll(arr) || bAll(arr);
-    }
-
-    //判断是否是全w
-    private static boolean wAll(char[] arr) {
-        for(int i = 0; i < arr.length; i++) {
-            if(arr[i] != 'w') {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    //判断是否是全b
-    private static boolean bAll(char[] arr) {
-        for(int i = 0; i < arr.length; i++) {
-            if(arr[i] != 'b') {
+        for(int i = 1; i < arr.length; i++) {
+            if(arr[i] != arr[0]) {
                 return false;
             }
         }

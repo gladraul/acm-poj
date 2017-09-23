@@ -30,7 +30,7 @@ public class Poj1753_01 {
 			}
 
 			int num = 0;
-			for(num = 1; num < 17; num++) {
+			for(num = 1; num <= 16; num++) {
 				int[] result = new int[num];
 				if(flipByCombn(arrValue, 0, result, num, num)) {
 					System.out.println(num);
@@ -59,9 +59,7 @@ public class Poj1753_01 {
 				char[] tmpArray = Arrays.copyOf(arr, 16);
 				for(int j = num - 1; j >= 0; j--) {
 					flipArray(tmpArray, result[j]);
-					//System.out.print(result[j] + "\t");
 				}
-				//System.out.println();
 				if(isGoal(tmpArray)) {
 					return true;
 				}
